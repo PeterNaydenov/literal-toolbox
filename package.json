@@ -21,6 +21,7 @@
     "cover": "c8 mocha test",
     "build": "rollup -c"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PeterNaydenov/literal-toolbox.git"
@@ -30,6 +31,7 @@
     "url": "https://github.com/PeterNaydenov/literal-toolbox/issues"
   },
   "homepage": "https://github.com/PeterNaydenov/literal-toolbox#readme",
+
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
@@ -39,6 +41,7 @@
     "mocha": "^10.8.2",
     "rollup": "^4.27.3"
   },
+  
   "c8": {
     "include": [
       "src/**/*.js"
