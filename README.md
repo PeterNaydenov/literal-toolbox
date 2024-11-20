@@ -2,7 +2,17 @@
 
 A collection of tag functions designed to transform string literals into dynamic render functions.
 
-# Usage
+
+
+## Installation
+
+```bash
+npm install @peter.naydenov/literal-toolbox
+```
+
+
+
+## Usage
 
 
 Use function `obj` when you will name your placeholders and will provide data as an object.
