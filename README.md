@@ -1,27 +1,25 @@
 # literal-toolbox (@peter.naydenov/literal-toolbox)
-***UNDER HEAVY DEVELOPMENT***
 
 A collection of tag functions designed to transform string literals into dynamic render functions.
 
 # Usage
+
+
+Use function `obj` when you will name your placeholders and will provide data as an object.
 ```js
 import literal from '@peter.naydenov/literal-toolbox'
 
 const templateFn = literal.obj`${'greet'} darling ${'name'}, my age is ${'age'}. Great!`
-
 // NOTE: Take a look that the placeholder names are wrapped in quotes!
 
 const htmlSnippet = templateFn({
-                            greet: 'Hello',
-                            name: 'John',
-                            age: 42
-                        })              
-
+                                greet: 'Hello',
+                                name: 'John',
+                                age: 42
+                            })
 ```
 
-Use function 'obj' when you will name your placeholders and will provide data as an object.
-
-Use function 'arr' when you will  number your placeholders and will provide data as an array. Example:
+Use function `arr` when you will  number your placeholders and will provide data as an array. Example:
 ```js
 const templateFn = literal.arr`${0} darling ${1}, my age is ${2}. Great!`
 const htmlSnippet = templateFn(['Hello', 'John', 42])
@@ -36,6 +34,7 @@ const htmlSnippet = templateFn ( 'Hello', 'John', 42 )
 
 
 
+
 ## Credits
 '@peter.naydenov/literal-toolbox' was created and supported by Peter Naydenov.
 
@@ -43,3 +42,5 @@ const htmlSnippet = templateFn ( 'Hello', 'John', 42 )
 
 ## License
 '@peter.naydenov/literal-toolbox' is released under the MIT License.
+
+

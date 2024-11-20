@@ -8,13 +8,13 @@ return function main ( list ) {
                 return list.reduce ( ( acc, part ) => {
                                 let key = tpl[extra++];
                                 const extraData = vals[key]? vals[key] : '';
-                                
+
                                 if ( !part )   part = extraData
                                 else           part = part + extraData
                                 return acc + part
                     }, '' )
         } // tagClosure func. 
-}} // main func.
+}} // literal and main func.
 
 
 
