@@ -13,8 +13,7 @@ describe ( 'Literal-toolbox', () => {
                         , greet  : 'Hey'
                         , age    : 30
                         , extra  : 12
-                    }
-                ;
+                    };
 
                 const fn = literal.obj`${'greet'} darling ${'name'}, my age is ${'age'}. Great!`
                 const res = fn ( person )
@@ -32,11 +31,15 @@ describe ( 'Literal-toolbox', () => {
         }) // it arr
 
 
-        
+
     it ( 'Function arg', () => {
                 const fn = literal.arg`${0} darling ${1}, my age is ${2}. Great!`
                 const res = fn ( 'Hey', 'Bob', 30 )
                 expect ( res ).to.be.equal ( 'Hey darling Bob, my age is 30. Great!' )  
         }) // it arg
 
+
+
 }) // describe
+
+
