@@ -1,31 +1,62 @@
 {
   "name": "@peter.naydenov/literal-toolbox",
-  "version": "1.0.0",
   "description": "A collection of tag functions designed to transform string literals into dynamic render functions.",
-  "main": "src/main.js",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Peter Naydenov",
+  "main": "dist/literal-toolbox.umd.js",
   "type": "module",
+  "exports": {
+    ".": {
+              "import": "./dist/literal-toolbox.esm.mjs",
+              "require": "./dist/literal-toolbox.cjs",
+              "default": "./dist/literal-toolbox.umd.js"
+          },
+        "./package.json": "./package.json",
+        "./dist/*": "./dist/*",
+        "./src/*": "./src/*"
+    },
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "cover": "c8 mocha test",
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PeterNaydenov/literal-toolbox.git"
+  },
+  
+  "bugs": {
+    "url": "https://github.com/PeterNaydenov/literal-toolbox/issues"
+  },
+  "homepage": "https://github.com/PeterNaydenov/literal-toolbox#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "c8": "^10.1.2",
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2",
+    "rollup": "^4.27.3"
+  },
+  "c8": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "node_modules",
+      "test",
+      "test-data"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
   },
   "keywords": [
     "string",
     "literals",
     "tag",
     "functions"
-  ],
-  "author": "Peter Naydenov",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PeterNaydenov/literal-toolbox/issues"
-  },
-  "homepage": "https://github.com/PeterNaydenov/literal-toolbox#readme",
-
-  "devDependencies": {
-    "mocha": "^10.8.2",
-    "chai": "^5.1.2"
-  }
+  ]
 }
