@@ -1,5 +1,12 @@
 # literal-toolbox (@peter.naydenov/literal-toolbox)
 
+![version](https://img.shields.io/github/package-json/v/peterNaydenov/literal-toolbox)
+![license](https://img.shields.io/github/license/peterNaydenov/literal-toolbox)
+![GitHub issues](https://img.shields.io/github/issues/peterNaydenov/literal-toolbox)
+![GitHub top language](https://img.shields.io/github/languages/top/peterNaydenov/literal-toolbox)
+
+
+
 A collection of tag functions designed to transform string literals into dynamic render functions.
 
 
