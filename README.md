@@ -4,6 +4,7 @@
 ![license](https://img.shields.io/github/license/peterNaydenov/literal-toolbox)
 ![GitHub issues](https://img.shields.io/github/issues/peterNaydenov/literal-toolbox)
 ![GitHub top language](https://img.shields.io/github/languages/top/peterNaydenov/literal-toolbox)
+![npm package minimized gzipped size (scoped)](https://img.shields.io/bundlejs/size/%40peter.naydenov/literal-toolbox)
 
 
 
@@ -46,6 +47,7 @@ Use function 'arg' when you will number your placeholders and will provide data 
 ```js
 const templateFn = literal.arg`${0} darling ${1}, my age is ${2}. Great!`
 const htmlSnippet = templateFn ( 'Hello', 'John', 42 )
+
 ```
 
 
