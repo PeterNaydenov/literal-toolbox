@@ -1,3 +1,4 @@
+// First published on npm in 2024, November 20th
 function literal ( type ) {
 return function main ( list ) {
     let tpl =  arguments;
