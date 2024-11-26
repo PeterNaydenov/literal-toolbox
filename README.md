@@ -54,6 +54,27 @@ const htmlSnippet = templateFn ( 'Hello', 'John', 42 )
 
 
 
+### Dynamic Placeholder Evaluation
+
+In version 1.1.0 and onwards, the `obj`, `arr`, and `arg` functions support functions as arguments. Functions can dynamically evaluate application state or other data to produce a string result. Example:
+
+```js
+let loginState = false; // external state
+function loginFn() {
+    return loginState ? '' : 'You need to login first';
+}
+
+const fn = literal.obj`Change profile name. ${'login'}`;
+let res = fn({ login: loginFn });
+// res == 'Change profile name. You need to login first'
+
+loginState = true;
+res = fn({ login: loginFn }) // Use exactly the same request
+// res == 'Change profile name.'
+```
+
+
+
 ## Credits
 '@peter.naydenov/literal-toolbox' was created and supported by Peter Naydenov.
 

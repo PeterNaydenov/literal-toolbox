@@ -40,6 +40,28 @@ describe ( 'Literal-toolbox', () => {
 
 
 
+    it ( 'Data as a function', () => {
+        // Use external data to fullfill the placeholders
+            let note2 = `You need to login first` 
+            let loginState = false; // it's a external state
+
+            
+            function loginFn () {
+                        if ( loginState )   return ''
+                        else                return note2
+                        // Fill functions should retrun a string
+                } // loginFn func.
+
+            const fn = literal.obj`Change profile name. ${'login'}`
+            const res = fn ({
+                                login:loginFn
+                            })
+            expect ( res ).to.be.equal ( 'Change profile name. You need to login first' )
+
+        }) // it data as a function
+
+
+
 }) // describe
 
 

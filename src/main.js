@@ -7,7 +7,9 @@ return function main ( list ) {
                 if ( type === 'arg' )   vals = arguments
                 return list.reduce ( ( acc, part ) => {
                                 let key = tpl[extra++];
-                                const extraData = vals[key]? vals[key] : '';
+                                let extraData = vals[key]? vals[key] : '';
+                                const isItFunc = typeof extraData === 'function';
+                                if ( isItFunc )   extraData = extraData ()
 
                                 if ( !part )   part = extraData
                                 else           part = part + extraData
