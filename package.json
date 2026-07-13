@@ -39,8 +39,8 @@
     "rollup": "^4.60.3"
   },
   "overrides": {
-    "diff" : "^8.0.4",
-    "serialize-javascript" : "^7.0.5"
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.5"
   },
   "c8": {
     "include": [
@@ -61,5 +61,8 @@
     "literals",
     "tag",
     "functions"
-  ]
+  ],
+  "allowScripts": {
+    "fsevents@2.3.3": true
+  }
 }
