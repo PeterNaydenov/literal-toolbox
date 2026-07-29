@@ -1,5 +1,5 @@
 import literal from '../src/main.js'
-import { expect } from 'chai'
+import { describe, it, expect } from 'vitest'
 
 
 describe ( 'Literal-toolbox', () => {
@@ -7,8 +7,8 @@ describe ( 'Literal-toolbox', () => {
 
 
     it ( 'Function obj', () => {
-                const 
-                    person = { 
+                const
+                    person = {
                           name   : 'Bob'
                         , greet  : 'Hey'
                         , age    : 30
@@ -17,7 +17,7 @@ describe ( 'Literal-toolbox', () => {
 
                 const fn = literal.obj`${'greet'} darling ${'name'}, my age is ${'age'}. Great!`
                 const res = fn ( person )
-                expect ( res ).to.be.equal ( 'Hey darling Bob, my age is 30. Great!' )
+                expect ( res ).toBe ( 'Hey darling Bob, my age is 30. Great!' )
         }) // it obj
 
 
@@ -27,7 +27,7 @@ describe ( 'Literal-toolbox', () => {
 
                 const fn = literal.arr`${0} darling ${1}, my age is ${2}. Great!`
                 const res = fn ( person )
-                expect ( res ).to.be.equal ( 'Hey darling Bob, my age is 30. Great!' )
+                expect ( res ).toBe ( 'Hey darling Bob, my age is 30. Great!' )
         }) // it arr
 
 
@@ -35,17 +35,17 @@ describe ( 'Literal-toolbox', () => {
     it ( 'Function arg', () => {
                 const fn = literal.arg`${0} darling ${1}, my age is ${2}. Great!`
                 const res = fn ( 'Hey', 'Bob', 30 )
-                expect ( res ).to.be.equal ( 'Hey darling Bob, my age is 30. Great!' )  
+                expect ( res ).toBe ( 'Hey darling Bob, my age is 30. Great!' )
         }) // it arg
 
 
 
     it ( 'Data as a function', () => {
         // Use external data to fullfill the placeholders
-            let note2 = `You need to login first` 
+            let note2 = `You need to login first`
             let loginState = false; // it's a external state
 
-            
+
             function loginFn () {
                         if ( loginState )   return ''
                         else                return note2
@@ -56,12 +56,10 @@ describe ( 'Literal-toolbox', () => {
             const res = fn ({
                                 login:loginFn
                             })
-            expect ( res ).to.be.equal ( 'Change profile name. You need to login first' )
+            expect ( res ).toBe ( 'Change profile name. You need to login first' )
 
         }) // it data as a function
 
 
 
 }) // describe
-
-
