@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Peter Naydenov",
   "main": "dist/literal-toolbox.umd.js",
-  "types": "dist/literal-toolbox.d.ts",
+  "types": "dist/main.d.ts",
   "files": [
     "dist",
     "src"
@@ -24,8 +24,8 @@
   "scripts": {
     "test": "vitest run",
     "cover": "vitest run --coverage",
-    "build": "tsc && node scripts/build-dts.js && rollup -c",
-    "build:types": "tsc && node scripts/build-dts.js"
+    "build": "tsc && rollup -c",
+    "build:types": "tsc"
   },
   "repository": {
     "type": "git",
