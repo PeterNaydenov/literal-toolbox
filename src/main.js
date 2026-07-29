@@ -1,4 +1,38 @@
-// First published on npm in 2024, November 20th
+/**
+ * @file literal-toolbox
+ * Tag functions that turn template literals into parameterized render functions.
+ * Three variants are exported on the default object: `obj`, `arr`, and `arg`.
+ *
+ * Placeholder values can be plain strings or zero-argument functions that return a
+ * string (lazy resolution). Missing keys resolve to an empty string.
+ *
+ * @since 2024-11-20
+ * @author Peter Naydenov
+ * @example
+ *   import literal from '@peter.naydenov/literal-toolbox'
+ *
+ *   // Object-keyed lookup
+ *   const greet = literal.obj`${'greeting'}, ${'name'}!`
+ *   greet({ greeting: 'Hi', name: 'Bob' })   // => "Hi, Bob!"
+ *
+ *   // Array-indexed lookup
+ *   const join = literal.arr`${0} ${1} ${2}`
+ *   join(['a', 'b', 'c'])                    // => "a b c"
+ *
+ *   // Positional arguments
+ *   const sig = literal.arg`a=${0} b=${1} c=${2}`
+ *   sig('x', 'y', 'z')                       // => "a=x b=y c=z"
+ */
+
+/**
+ * A value placed into a placeholder. Strings are inserted as-is; functions are
+ * called with no arguments and their return value is inserted (lazy resolution).
+ * @typedef {(string|(() => string))} FillValue
+ */
+
+/**
+ * @private
+ */
 function literal ( type ) {
 return function main ( list ) {
     let tpl =  arguments;
@@ -16,16 +50,63 @@ return function main ( list ) {
                                 else           part = part + extraData
                                 return acc + part
                     }, '' )
-        } // tagClosure func. 
+        } // tagClosure func.
 }} // literal and main func.
 
 
 
 
-export default { 
+
+/**
+ * Collection of literal tag functions.
+ * @namespace literal
+ */
+export default {
+                /**
+                 * Substitute placeholders using named keys from a plain object.
+                 * Placeholder keys must be quoted string literals (e.g. ``${'name'}``).
+                 *
+                 * Missing keys resolve to an empty string. Function values are
+                 * invoked with no arguments and their return value is inserted,
+                 * which is useful for lazy or conditional content.
+                 *
+                 * @type {(strings: TemplateStringsArray, ...keys: string[]) => (data: Record<string, FillValue>) => string}
+                 * @example
+                 *   const fn = literal.obj`${'greet'} ${'name'} (${'age'})`
+                 *   fn({ greet: 'Hey', name: 'Bob', age: 30 })   // => "Hey Bob (30)"
+                 * @example
+                 *   // Lazy / dynamic values via functions:
+                 *   const fn = literal.obj`Status: ${'login'}`
+                 *   fn({ login: () => 'logged in' })             // => "Status: logged in"
+                 */
                   obj : function obj () { return literal ( 'obj' )( ...arguments ) }
-                , arr : function arr () { return literal ( 'arr' )( ...arguments ) }
-                , arg : function arg () { return literal ( 'arg' )( ...arguments ) }
+                ,
+                /**
+                 * Substitute placeholders using numeric indices into an array.
+                 * Placeholder keys must be numeric literals (e.g. ``${0}``).
+                 *
+                 * Missing indices resolve to an empty string. Function values are
+                 * invoked with no arguments and their return value is inserted.
+                 *
+                 * @type {(strings: TemplateStringsArray, ...keys: number[]) => (data: FillValue[]) => string}
+                 * @example
+                 *   const fn = literal.arr`${0} ${1} ${2}`
+                 *   fn(['a', 'b', 'c'])                         // => "a b c"
+                 */
+                  arr : function arr () { return literal ( 'arr' )( ...arguments ) }
+                ,
+                /**
+                 * Substitute placeholders using positional arguments.
+                 * Placeholder keys must be numeric literals (e.g. ``${0}``).
+                 *
+                 * Missing positional arguments resolve to an empty string.
+                 * Function values are invoked with no arguments and their return
+                 * value is inserted.
+                 *
+                 * @type {(strings: TemplateStringsArray, ...keys: number[]) => (...args: FillValue[]) => string}
+                 * @example
+                 *   const fn = literal.arg`${0} ${1} ${2}`
+                 *   fn('a', 'b', 'c')                           // => "a b c"
+                 */
+                  arg : function arg () { return literal ( 'arg' )( ...arguments ) }
             }
-
-
