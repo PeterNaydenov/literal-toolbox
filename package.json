@@ -5,6 +5,11 @@
   "license": "MIT",
   "author": "Peter Naydenov",
   "main": "dist/literal-toolbox.umd.js",
+  "types": "dist/literal-toolbox.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "type": "module",
   "exports": {
     ".": {
@@ -19,7 +24,8 @@
   "scripts": {
     "test": "vitest run",
     "cover": "vitest run --coverage",
-    "build": "rollup -c"
+    "build": "tsc && node scripts/build-dts.js && rollup -c",
+    "build:types": "tsc && node scripts/build-dts.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +40,7 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@vitest/coverage-v8": "^4.1.10",
     "rollup": "^4.62.2",
+    "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   },
   "keywords": [
