@@ -37,13 +37,13 @@ const htmlSnippet = templateFn({
                             })
 ```
 
-Use function `arr` when you will  number your placeholders and will provide data as an array. Example:
+Use function `arr` when you will number your placeholders and will provide data as an array. Example:
 ```js
 const templateFn = literal.arr`${0} darling ${1}, my age is ${2}. Great!`
 const htmlSnippet = templateFn(['Hello', 'John', 42])
 ```
 
-Use function 'arg' when you will number your placeholders and will provide data as separate arguments. Example:
+Use function `arg` when you will number your placeholders and will provide data as separate arguments. Example:
 ```js
 const templateFn = literal.arg`${0} darling ${1}, my age is ${2}. Great!`
 const htmlSnippet = templateFn ( 'Hello', 'John', 42 )
