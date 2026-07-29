@@ -1,7 +1,7 @@
 {
   "name": "@peter.naydenov/literal-toolbox",
   "description": "A collection of tag functions designed to transform string literals into dynamic render functions.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "author": "Peter Naydenov",
   "main": "dist/literal-toolbox.umd.js",
